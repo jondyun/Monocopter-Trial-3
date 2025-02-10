@@ -194,7 +194,7 @@ void loop() {
     servo3.write(servo3Angle);
     servo4.write(servo4Angle);
 
-    // Print for debugging
+    // Debug
     // Serial.print(servo1Angle);
     // Serial.print(", "); Serial.print(servo2Angle);
     // Serial.print(", "); Serial.print(servo3Angle);
@@ -210,7 +210,7 @@ void loop() {
     // Serial.print("Yaw Output: "); Serial.println(yawOutput);
   }
 
-  // Handle serial input for PID tuning
+  // Serial input for PID tuning
   if (Serial.available()) {
     char command = Serial.read();
     if (command == 'P') Kp += 0.1; // Increase Kp
@@ -221,7 +221,7 @@ void loop() {
     else if (command == 'd') Kd -= 0.01; // Decrease Kd
     else if (command == '?') printPIDValues(); // Print PID values
 
-    // Clamp PID values to prevent invalid settings
+    // Clamp
     Kp = constrain(Kp, 0, 10);
     Ki = constrain(Ki, 0, 1);
     Kd = constrain(Kd, 0, 1);
